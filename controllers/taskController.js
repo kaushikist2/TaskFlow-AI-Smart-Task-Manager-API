@@ -33,3 +33,16 @@ exports.deleteTask = async (req, res) => {
   await Task.findByIdAndDelete(req.params.id)
   res.json("Task deleted")
 }
+
+exports.aiSuggestion = async (req, res) => {
+  const { title } = req.body
+
+  // ai logic for demo
+  let suggestion = "Break task into smaller steps"
+
+  if (title.includes("exam")) {
+    suggestion = "Revise daily and solve past papers"
+  }
+
+  res.json({ suggestion })
+}
